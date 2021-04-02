@@ -1,10 +1,11 @@
-language: generic 
-sudo : required
+sudo: required
+language: generic
+
 services:
   - docker
 
-  before_install:
-    -docker build -t nicomdt/docker-react -f Dockerfile.dev .
+before_install:
+  - docker build -t stephengrider/docker-react -f Dockerfile.dev .
 
-  script:
-  - docker run -e CI=true nicomdt/docker-react npm run test -- --coverage
+script:
+  - docker run -e CI=true stephengrider/docker-react npm run test
